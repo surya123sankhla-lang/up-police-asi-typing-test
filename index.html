@@ -49,132 +49,273 @@ body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#e9eef2;color:#1
 .submit-wrap{text-align:right;margin-top:14px}
 .btn{background:#35a9d6;color:white;border:none;padding:9px 20px;border-radius:2px;font-weight:bold;cursor:pointer}
 .btn:hover{background:#168dbb}
+.cta-box{margin-top:14px;border:1px solid #b7d5ee;background:#f3f9ff;padding:13px;font-size:13px;line-height:1.5}
+.cta-box h3{margin:0 0 7px;color:#0b5ea8;font-size:16px}
+.cta-box p{margin:0 0 10px}
+.cta-box a{display:inline-block;background:#0b5ea8;color:white;padding:8px 13px;text-decoration:none;border-radius:3px;font-weight:bold}
 .seo-content{background:#fff;margin-top:14px;border:1px solid #c8d3dc;padding:18px;line-height:1.65;font-size:15px}
-.seo-content h1{font-size:25px;color:#063b66}
+.seo-content h1{font-size:25px;color:#063b66;margin:0 0 10px}
+.seo-content h2{font-size:20px;color:#0b5ea8;margin-top:18px}
+.seo-content table{width:100%;border-collapse:collapse;margin:12px 0}
+.seo-content td,.seo-content th{border:1px solid #cfd8e3;padding:9px;text-align:left}
+.seo-content th{background:#edf6ff}
 .footer-line{height:20px;background:#4a666f;color:white;text-align:center;font-size:11px;line-height:20px;margin-top:6px}
+select{padding:5px 10px;border:1px solid #aaa;background:white}
 .result-screen{display:none;min-height:100vh;background:#e9eef2;padding:30px}
-.result-card{max-width:780px;margin:30px auto;background:white;border:1px solid #b9c5ce}
+.result-card{max-width:780px;margin:30px auto;background:white;border:1px solid #b9c5ce;box-shadow:0 4px 18px rgba(0,0,0,.15)}
 .result-head{background:#063b66;color:white;text-align:center;padding:22px}
+.result-head img{width:76px;border-radius:10px;margin-bottom:8px}
 .result-body{padding:25px}
 .result-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.result-item{border:1px solid #d0d7de;background:#f8fbff;padding:16px;text-align:center}
+.result-item{border:1px solid #d0d7de;background:#f8fbff;padding:16px;text-align:center;font-size:16px}
 .result-item b{display:block;color:#1268b3;font-size:30px;margin-top:5px}
 .visit{display:block;width:max-content;margin:24px auto 0;background:#063b66;color:white;text-decoration:none;padding:12px 25px;border-radius:3px;font-weight:bold}
+@media(max-width:760px){
+.header{height:auto;padding:12px;flex-direction:column;gap:8px}
+.exam-area{grid-template-columns:1fr}
+.side-note{height:auto}
+.info-row{height:auto;padding:10px;flex-direction:column;gap:8px}
+.result-grid{grid-template-columns:1fr}
+}
 </style>
 </head>
 
 <body>
 
 <div id="testScreen">
+  <div class="top-strip"></div>
 
-<div class="top-strip"></div>
+  <div class="header">
+    <div class="brand">
+      <img src="https://res.cloudinary.com/dvnjhbz54/image/upload/v1771509631/photo_6102735051574414807_y_ngjmnz.jpg" alt="TypingNexus Logo">
+      <div>
+        <div class="brand-title">Typing<span>Nexus</span></div>
+        <div class="brand-sub">TYPE BETTER, SCORE BETTER</div>
+      </div>
+    </div>
 
-<div class="header">
-<div class="brand">
-<img src="https://res.cloudinary.com/dvnjhbz54/image/upload/v1771509631/photo_6102735051574414807_y_ngjmnz.jpg">
-<div>
-<div class="brand-title">Typing<span>Nexus</span></div>
-<div class="brand-sub">TYPE BETTER, SCORE BETTER</div>
+    <div class="user-box">
+      <div>
+        <div>Welcome, <b>UP Police ASI Aspirant</b></div>
+        <div>Time Left: <span class="timer" id="timer">05:00</span></div>
+      </div>
+      <div class="avatar">👤</div>
+    </div>
+  </div>
+
+  <div class="official-cta">
+    <b>Official Mock Test Practice:</b>
+    UP Police ASI ka full mock dene ke liye
+    <a href="https://typingnexus.in" target="_blank">TypingNexus.in par visit karein</a>
+  </div>
+
+  <div class="info-row">
+    <div>
+      Test Duration:
+      <select id="duration" onchange="changeDuration()">
+        <option value="120">2 Minutes</option>
+        <option value="300" selected>5 Minutes</option>
+        <option value="420">7 Minutes</option>
+      </select>
+    </div>
+    <div><b>UP Police ASI Typing Test Practice</b></div>
+  </div>
+
+  <div class="page">
+    <div class="panel">
+      <div class="panel-title">Keyboard Typing QWERTY</div>
+
+      <div class="exam-area">
+        <div>
+          <div class="passage-box" id="passage"></div>
+          <textarea id="typingBox" class="typing-box" placeholder="Type the above text here..." oninput="startTest()"></textarea>
+        </div>
+
+        <div>
+          <div class="side-note">
+            In this typing test, you have to <b>type the text in given area</b> exactly as shown.
+            <br><br>
+            Use <b>Backspace</b> only to correct mistakes.
+            <br><br>
+            UP Police ASI typing me speed ke sath accuracy bhi important hoti hai.
+          </div>
+
+          <div class="submit-wrap">
+            <button class="btn" onclick="submitTest()">Submit</button>
+          </div>
+
+          <div class="cta-box">
+            <h3>More Typing Practice</h3>
+            <p>UP Police ASI, UP Police Clerk, Computer Operator aur Hindi-English typing ke full mock ke liye TypingNexus par practice karein.</p>
+            <a href="https://typingnexus.in" target="_blank">Visit TypingNexus.in</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="seo-content">
+      <h1>UP Police ASI Typing Test Practice - Hindi English Typing</h1>
+
+      <p>
+        UP Police ASI Typing Test Practice tool is designed for candidates preparing for Uttar Pradesh Police Assistant Sub Inspector, clerk and computer operator typing-related examinations. This page provides a clean TCS iON style typing interface where candidates can practice with timer, paragraph typing, speed calculation, accuracy tracking and instant result summary.
+      </p>
+
+      <p>
+        The purpose of this UP Police ASI typing practice page is to help students improve typing speed, net speed, accuracy, confidence and exam discipline. Candidates can select 2 minutes, 5 minutes or 7 minutes duration according to their practice level. The paragraph length automatically changes according to the selected time.
+      </p>
+
+      <h2>UP Police ASI Typing Rules</h2>
+      <table>
+        <tr><th>Exam Name</th><td>UP Police ASI / Clerk / Computer Operator Typing Practice</td></tr>
+        <tr><th>Typing Language</th><td>Hindi & English Typing Practice</td></tr>
+        <tr><th>English Speed Target</th><td>30-35 WPM practice target</td></tr>
+        <tr><th>Hindi Speed Target</th><td>25-30 WPM practice target</td></tr>
+        <tr><th>Practice Duration</th><td>2 Minutes, 5 Minutes, 7 Minutes</td></tr>
+        <tr><th>Interface</th><td>TCS iON Style Typing Interface</td></tr>
+        <tr><th>Result</th><td>Gross Speed, Net Speed, Accuracy, Errors, Typed Words</td></tr>
+      </table>
+
+      <h2>How to Use This UP Police Typing Tool</h2>
+      <ol>
+        <li>Select the test duration from 2 minutes, 5 minutes or 7 minutes.</li>
+        <li>Click inside the typing box to start the timer automatically.</li>
+        <li>Type the paragraph exactly as shown in the upper box.</li>
+        <li>Use backspace only when you need to correct a mistake.</li>
+        <li>Click Submit to check typing speed, net speed and accuracy.</li>
+      </ol>
+
+      <h2>Typing Tips for UP Police ASI Candidates</h2>
+      <p>
+        Candidates should focus on accuracy before speed. UP Police typing practice requires steady rhythm, clean typing and minimum mistakes. Daily typing practice improves finger movement, typing confidence, word flow and exam discipline.
+      </p>
+
+      <p>
+        For official mock tests, all India ranking and more Hindi-English typing practice, visit
+        <a href="https://typingnexus.in" target="_blank">TypingNexus.in</a>.
+      </p>
+    </section>
+
+    <div class="footer-line">© <span id="yearBox"></span> TypingNexus.in | UP Police ASI Typing Test Practice</div>
+  </div>
 </div>
-</div>
 
-<div class="user-box">
-<div>
-<div>Welcome, <b>UP Police ASI Aspirant</b></div>
-<div>Time Left: <span class="timer" id="timer">05:00</span></div>
-</div>
-<div class="avatar">👤</div>
-</div>
-</div>
+<div class="result-screen" id="resultScreen">
+  <div class="result-card">
+    <div class="result-head">
+      <img src="https://res.cloudinary.com/dvnjhbz54/image/upload/v1771509631/photo_6102735051574414807_y_ngjmnz.jpg" alt="TypingNexus Logo">
+      <h1>UP Police ASI Typing Test Result</h1>
+      <p>TypingNexus Performance Report</p>
+    </div>
 
-<div class="official-cta">
-<b>Official Mock Test Practice:</b>
-UP Police ASI ka full mock dene ke liye
-<a href="https://typingnexus.in" target="_blank">TypingNexus.in par visit karein</a>
-</div>
+    <div class="result-body">
+      <div class="result-grid">
+        <div class="result-item">Gross Speed <b id="grossWpm">0 WPM</b></div>
+        <div class="result-item">Net Speed <b id="netWpm">0 WPM</b></div>
+        <div class="result-item">Accuracy <b id="accuracy">0%</b></div>
+        <div class="result-item">Errors <b id="errors">0</b></div>
+        <div class="result-item">Typed Words <b id="words">0</b></div>
+        <div class="result-item">Time Used <b id="timeUsed">0 Min</b></div>
+      </div>
 
-<div class="info-row">
-<div>
-Test Duration:
-<select id="duration">
-<option>2 Minutes</option>
-<option selected>5 Minutes</option>
-<option>7 Minutes</option>
-</select>
-</div>
-
-<div><b>UP Police ASI Typing Test Practice</b></div>
-</div>
-
-<div class="page">
-
-<div class="panel">
-
-<div class="panel-title">Keyboard Typing QWERTY</div>
-
-<div class="exam-area">
-
-<div>
-
-<div class="passage-box">
-UP Police ASI typing practice helps candidates improve typing speed typing accuracy and confidence for police clerk and assistant sub inspector examinations. Regular typing practice improves typing consistency and exam performance.
-</div>
-
-<textarea class="typing-box" placeholder="Type the above text here..."></textarea>
-
-</div>
-
-<div>
-
-<div class="side-note">
-UP Police ASI typing test me candidates ko speed aur accuracy maintain karni hoti hai. Daily typing practice improves performance in police recruitment examinations.
-</div>
-
-<div class="submit-wrap">
-<button class="btn">Submit</button>
-</div>
-
-</div>
-</div>
-</div>
-
-<section class="seo-content">
-
-<h1>UP Police ASI Typing Test Practice</h1>
-
-<p>
-UP Police ASI Typing Test Practice tool specially designed hai un candidates ke liye jo Uttar Pradesh Police Assistant Sub Inspector aur clerk typing examinations ki preparation kar rahe hain. Typing test police recruitment process ka important stage hota hai jahan typing speed aur typing accuracy evaluate ki jaati hai.
-</p>
-
-<p>
-Ye typing platform TCS iON style typing interface provide karta hai jisme candidates real exam environment me typing practice kar sakte hain. Candidates typing speed improve karne ke saath-saath typing consistency aur exam confidence bhi develop kar sakte hain.
-</p>
-
-<h2>UP Police ASI Typing Rules</h2>
-
-<ul>
-<li>English Typing Speed: 30-35 WPM</li>
-<li>Hindi Typing Speed: 25-30 WPM</li>
-<li>Typing Duration: 10 Minutes</li>
-<li>Typing Language: English & Hindi</li>
-<li>Backspace: Allowed</li>
-<li>Recommended Accuracy: 90%+</li>
-</ul>
-
-<p>
-For official mock tests, typing rankings and advanced typing practice visit TypingNexus.in.
-</p>
-
-</section>
-
-<div class="footer-line">
-© <span id="yearBox"></span> TypingNexus.in
-</div>
-
+      <a class="visit" href="https://typingnexus.in" target="_blank">Visit Website</a>
+    </div>
+  </div>
 </div>
 
 <script>
-document.getElementById("yearBox").innerText = new Date().getFullYear();
+const currentYear = new Date().getFullYear();
+document.getElementById("yearBox").innerText = currentYear;
+document.title = "UP Police ASI Typing Test Practice " + currentYear + " - Hindi English Typing";
+
+const paragraph2 = `UP Police ASI typing practice improves speed, accuracy and confidence for police recruitment typing test preparation. Candidates should type carefully and avoid unnecessary errors during practice.`;
+
+const paragraph5 = `UP Police ASI typing practice is useful for candidates preparing for Assistant Sub Inspector, clerk and computer operator recruitment. Regular practice helps improve typing speed, accuracy, focus and confidence. A candidate should type the given paragraph carefully and avoid unnecessary mistakes. This typing test provides an exam style interface where students can practice with timer, speed calculation and result summary. Daily practice helps candidates understand typing rhythm and improve performance in real exam conditions.`;
+
+const paragraph7 = `UP Police ASI typing test practice is an important part of preparation for candidates applying for Assistant Sub Inspector, clerk and computer operator posts. A good typing test requires proper speed, high accuracy and steady concentration. Candidates should practice daily on an exam style interface so that they can become familiar with timer pressure and paragraph typing. While typing, the candidate should read the given text carefully and type every word exactly as shown. Mistakes should be corrected using the backspace key only. Regular practice improves finger movement, typing rhythm, word recognition and confidence. This UP Police ASI typing tool provides a clean TCS iON style interface with paragraph typing, timer, gross speed, net speed, accuracy and error calculation.`;
+
+const passageBox = document.getElementById("passage");
+const typingBox = document.getElementById("typingBox");
+const timerBox = document.getElementById("timer");
+
+let totalTime = 300;
+let timeLeft = 300;
+let started = false;
+let interval = null;
+let currentPassage = paragraph5;
+
+function setPassage(){
+  const val = document.getElementById("duration").value;
+  if(val == "120") currentPassage = paragraph2;
+  if(val == "300") currentPassage = paragraph5;
+  if(val == "420") currentPassage = paragraph7;
+  passageBox.innerText = currentPassage;
+}
+
+function changeDuration(){
+  if(started) return;
+  totalTime = parseInt(document.getElementById("duration").value);
+  timeLeft = totalTime;
+  setPassage();
+  updateTimer();
+}
+
+function updateTimer(){
+  const m = Math.floor(timeLeft / 60);
+  const s = timeLeft % 60;
+  timerBox.innerText = String(m).padStart(2,"0") + ":" + String(s).padStart(2,"0");
+}
+
+function startTest(){
+  if(started) return;
+  started = true;
+  totalTime = parseInt(document.getElementById("duration").value);
+  timeLeft = totalTime;
+
+  interval = setInterval(function(){
+    timeLeft--;
+    updateTimer();
+
+    if(timeLeft <= 0){
+      submitTest();
+    }
+  }, 1000);
+}
+
+function submitTest(){
+  clearInterval(interval);
+
+  const typed = typingBox.value.trim();
+  const original = currentPassage;
+  let errors = 0;
+  let correct = 0;
+
+  for(let i=0;i<typed.length;i++){
+    if(typed[i] === original[i]){
+      correct++;
+    }else{
+      errors++;
+    }
+  }
+
+  const words = typed ? typed.split(/\s+/).length : 0;
+  const minutesUsed = Math.max((totalTime - timeLeft) / 60, 0.1);
+  const gross = Math.round(words / minutesUsed);
+  const net = Math.max(0, Math.round((words - errors / 5) / minutesUsed));
+  const acc = typed.length ? Math.max(0, Math.round((correct / typed.length) * 100)) : 0;
+
+  document.getElementById("grossWpm").innerText = gross + " WPM";
+  document.getElementById("netWpm").innerText = net + " WPM";
+  document.getElementById("accuracy").innerText = acc + "%";
+  document.getElementById("errors").innerText = errors;
+  document.getElementById("words").innerText = words;
+  document.getElementById("timeUsed").innerText = Math.round(minutesUsed * 10) / 10 + " Min";
+
+  document.getElementById("testScreen").style.display = "none";
+  document.getElementById("resultScreen").style.display = "block";
+}
+
+setPassage();
+updateTimer();
 </script>
 
 </body>
